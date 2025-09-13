@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import profilePic from "./assets/images/profile.jpg";
 
+
 gsap.registerPlugin(ScrollToPlugin);
 
 export default function App() {
@@ -91,7 +92,9 @@ export default function App() {
     >
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-white ">
-        <h1 className="text-xl font-semibold tracking-tight">&lt;L/&gt;ex</h1>
+        <h1 className="text-xl font-semibold tracking-tight">
+          <span className="text-blue-600">&lt;L/&gt;</span>ex
+        </h1>
 
         {/* Burger Icon */}
         <button
@@ -154,55 +157,104 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section ref={(el) => (sectionsRef.current[1] = el)} className="h-screen flex flex-col items-center justify-center px-6 bg-gray-50 text-gray-900">
-        <h3 className="text-3xl md:text-4xl font-bold text-center mb-6">About Me</h3>
-        <div className="max-w-3xl text-center space-y-4">
-          <p className="text-lg text-gray-600">
-            I’m <span className="font-semibold text-blue-600">&lt;L/&gt;ex</span>, a passionate software developer who loves creating interactive web experiences.
-          </p>
-          <p className="text-lg text-gray-600">
-            From building innovative apps like <span className="text-blue-600 font-medium">FitQuest</span> to exploring creative side projects, I thrive on turning ideas into reality.
-          </p>
-          <p className="text-lg text-gray-600">
-            I enjoy learning new technologies, experimenting with design, and finding elegant solutions to challenging problems.
-          </p>
-        </div>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          {["React", "Tailwind", "GSAP", "Kotlin", "PHP", "SQL"].map((skill, i) => (
-            <span key={i} className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-medium hover:scale-105 transform transition">
-              {skill}
-            </span>
-          ))}
-        </div>
-        <button onClick={() => scrollToSection(2)} className="mt-10 px-6 py-3 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700 hover:translate-y-1 transition transform">
-          View My Projects
-        </button>
-      </section>
+<section ref={(el) => (sectionsRef.current[1] = el)} className="h-screen flex flex-col items-center justify-center px-6 bg-gray-50 text-gray-900">
+  <h3 className="text-3xl md:text-4xl font-bold text-center mb-6">About Me</h3>
+  <div className="max-w-3xl text-center space-y-4">
+    <p className="text-lg text-gray-600">
+      I'm <span className="font-semibold text-blue-600">&lt;L/&gt;ex</span>, a passionate software developer who loves creating interactive web experiences.
+    </p>
+    <p className="text-lg text-gray-600">
+      From building innovative apps like <span className="text-blue-600 font-medium">FitQuest</span> to exploring creative side projects, I thrive on turning ideas into reality.
+    </p>
+    <p className="text-lg text-gray-600">
+      I enjoy learning new technologies, experimenting with design, and finding elegant solutions to challenging problems.
+    </p>
+  </div>
+  <div className="mt-8 flex flex-wrap justify-center gap-4">
+    {[
+      { 
+        name: "React", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-5 h-5" />
+      },
+      { 
+        name: "Tailwind", 
+        icon: 
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" className="w-5 h-5" />
+      },
+      { 
+        name: "GSAP", 
+        icon: <div className="w-5 h-5 bg-green-500 rounded flex items-center justify-center text-white text-xs font-bold">G</div>
+      },
+      { 
+        name: "Kotlin", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" className="w-5 h-5" />
+      },
+      { 
+        name: "PHP", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" className="w-5 h-5" />
+      },
+      { 
+        name: "SQL", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" className="w-5 h-5" />
+      },
+    ].map((skill, i) => (
+      <span key={i} className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-medium hover:scale-105 transform transition flex items-center gap-2">
+        {skill.icon}
+        {skill.name}
+      </span>
+    ))}
+  </div>
+  <button onClick={() => scrollToSection(2)} className="mt-10 px-6 py-3 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700 hover:translate-y-1 transition transform">
+    View My Projects
+  </button>
+</section>
 
       {/* Projects Section */}
       <section ref={(el) => (sectionsRef.current[2] = el)} className="h-screen flex flex-col items-center justify-center px-6 bg-white-100">
         <h3 className="text-2xl font-semibold text-center mb-10">Projects</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          {/* FitQuest */}
           <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
             <h4 className="text-lg font-semibold mb-2">FitQuest</h4>
-                        <p className="text-gray-600 text-sm mb-4">
+            <p className="text-gray-600 text-sm mb-4">
               A reward-based fitness app that utilizes motion tracking technology to gamify workouts.
             </p>
-            <span className="text-blue-600 font-medium hover:underline cursor-pointer">
-              See More →
-            </span>
+            <div
+              onClick={() => window.open("https://github.com/lexmarvin/FitQuestAlpha3.git", "_blank")}
+              className="px-4 py-2 bg-gray-100 text-gray-900 rounded-full font-medium hover:bg-gray-200 flex items-center gap-2 cursor-pointer transition transform hover:scale-105"
+            >
+             <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+              alt="GitHub"
+              className="w-5 h-5"
+            />
+              GitHub
+            </div>
           </div>
+
+          {/* K.K.K */}
           <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
             <h4 className="text-lg font-semibold mb-2">K.K.K (KasKas Keyboard)</h4>
             <p className="text-gray-600 text-sm mb-4">
-              A speed typing typing test with Tagalog words.
+              A speed typing test with Tagalog words.
             </p>
-            <span className="text-blue-600 font-medium hover:underline cursor-pointer">
-              See More →
-            </span>
+            <div
+              onClick={() => window.open("https://github.com/lexmarvin/KasKasKeyboard.git", "_blank")}
+              className="px-4 py-2 bg-gray-100 text-gray-900 rounded-full font-medium hover:bg-gray-200 flex items-center gap-2 cursor-pointer transition transform hover:scale-105"
+            >
+              <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+              alt="GitHub"
+              className="w-5 h-5"
+            />
+              GitHub
+            </div>
           </div>
+
         </div>
       </section>
+
 
       {/* Footer */}
       <section ref={(el) => (sectionsRef.current[3] = el)} className="flex items-center justify-center bg-gray-900 text-gray-300 h-12">
