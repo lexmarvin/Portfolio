@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ReactTyped } from "react-typed";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import profilePic from "./assets/images/profile.jpg";
-
+import profilePic from "./assets/images/grad pic.JPG";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -85,6 +84,21 @@ export default function App() {
     }
   }, [menuOpen]);
 
+  // 🔥 Slideshow State
+  const images = [
+    "/images/profile.jpg",
+    "/images/image 1.jpg",
+    "/images/image 2.jpg",
+  ];
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div
       ref={containerRef}
@@ -150,67 +164,116 @@ export default function App() {
 
         <div className="mb-10 md:mb-0 md:w-1/2 flex justify-center">
           <div className="relative">
-            <img src={profilePic} alt="Lex portrait" className="rounded-full shadow-lg object-cover w-72 h-72 md:w-80 md:h-80" />
+            <img src={profilePic} alt="Lex portrait" className="rounded-full shadow-lg object-cover w-72 h-72 md:w-80 md:h-110" />
             <div className="absolute inset-0 rounded-full border border-gray-200 pointer-events-none" />
           </div>
         </div>
       </section>
 
       {/* About Section */}
-<section ref={(el) => (sectionsRef.current[1] = el)} className="h-screen flex flex-col items-center justify-center px-6 bg-gray-50 text-gray-900">
-  <h3 className="text-3xl md:text-4xl font-bold text-center mb-6">About Me</h3>
-  <div className="max-w-3xl text-center space-y-4">
-    <p className="text-lg text-gray-600">
-      I'm <span className="font-semibold text-blue-600">&lt;L/&gt;ex</span>, a passionate software developer who loves creating interactive web experiences.
-    </p>
-    <p className="text-lg text-gray-600">
-      From building innovative apps like <span className="text-blue-600 font-medium">FitQuest</span> to exploring creative side projects, I thrive on turning ideas into reality.
-    </p>
-    <p className="text-lg text-gray-600">
-      I enjoy learning new technologies, experimenting with design, and finding elegant solutions to challenging problems.
-    </p>
-  </div>
-  <div className="mt-8 flex flex-wrap justify-center gap-4">
-    {[
-      { 
-        name: "React", 
-        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-5 h-5" />
-      },
-      { 
-        name: "Tailwind", 
-        icon: 
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" className="w-5 h-5" />
-      },
-      { 
-        name: "GSAP", 
-        icon: <div className="w-5 h-5 bg-green-500 rounded flex items-center justify-center text-white text-xs font-bold">G</div>
-      },
-      { 
-        name: "Kotlin", 
-        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" className="w-5 h-5" />
-      },
-      { 
-        name: "PHP", 
-        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" className="w-5 h-5" />
-      },
-      { 
-        name: "SQL", 
-        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" className="w-5 h-5" />
-      },
-    ].map((skill, i) => (
-      <span key={i} className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-medium hover:scale-105 transform transition flex items-center gap-2">
-        {skill.icon}
-        {skill.name}
-      </span>
-    ))}
-  </div>
-  <button onClick={() => scrollToSection(2)} className="mt-10 px-6 py-3 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700 hover:translate-y-1 transition transform">
-    View My Projects
-  </button>
-</section>
+      <section
+        ref={(el) => (sectionsRef.current[1] = el)}
+        className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-12 px-6 py-20 bg-gray-50 text-gray-900"
+      >
+        {/* Left: Changing Images */}
+        <div className="w-full md:w-1/2 flex justify-center">
+          <div className="w-80 h-100 border-2 border-black relative overflow-hidden rounded-lg">
+            {images.map((img, idx) => (
+              <img
+                key={idx}
+                src={img}
+                alt={`slideshow-${idx}`}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                  idx === currentImage ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Right: About Me Text */}
+        <div className="w-full md:w-1/2">
+          <h3 className="text-3xl md:text-4xl font-bold mb-6">About Me</h3>
+          <p className="text-lg mb-4">
+            I'm <span className="font-semibold text-blue-600">&lt;L/&gt;ex</span>, a passionate software developer who loves creating interactive web experiences.
+          </p>
+          <p className="text-lg mb-4">
+            From building innovative apps like <span className="text-blue-600 font-medium">FitQuest</span> to exploring creative side projects, I thrive on turning ideas into reality.
+          </p>
+          <p className="text-lg">
+            I enjoy learning new technologies, experimenting with design, and finding elegant solutions to challenging problems.
+          </p>
+        </div>
+      </section>
+
+  {/* Skills Section */}
+      <section
+        ref={(el) => (sectionsRef.current[2] = el)}
+        className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-white text-gray-900"
+      >
+        <h3 className="text-3xl md:text-4xl font-bold mb-12">Skills</h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl w-full text-center">
+          {/* Languages */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-700 mb-4">Languages</h4>
+            <ul className="space-y-4">
+              <li className="flex items-center justify-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="w-6 h-6" alt="JavaScript" />
+                JavaScript
+              </li>
+              <li className="flex items-center justify-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" className="w-6 h-6" alt="Kotlin" />
+                Kotlin
+              </li>
+              <li className="flex items-center justify-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" className="w-6 h-6" alt="Python" />
+                Python
+              </li>
+              <li className="flex items-center justify-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" className="w-6 h-6" alt="SQL" />
+                SQL
+              </li>
+            </ul>
+          </div>
+
+          {/* Frontend */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-700 mb-4">Front End</h4>
+            <ul className="space-y-4">
+              <li className="flex items-center justify-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" className="w-6 h-6" alt="React" />
+                React
+              </li>
+              <li className="flex items-center justify-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" className="w-6 h-6" alt="Next.js" />
+                Next.js
+              </li>
+              <li className="flex items-center justify-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" className="w-6 h-6" alt="Tailwind" />
+                Tailwind
+              </li>
+            </ul>
+          </div>
+
+          {/* Other Tech */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-700 mb-4">Other Technologies</h4>
+            <ul className="space-y-4">
+              <li className="flex items-center justify-center gap-2">
+                <div className="w-6 h-6 bg-green-600 text-white flex items-center justify-center font-bold rounded">G</div>
+                GSAP
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+
 
       {/* Projects Section */}
-      <section ref={(el) => (sectionsRef.current[2] = el)} className="h-screen flex flex-col items-center justify-center px-6 bg-white-100">
+      <section ref={(el) => (sectionsRef.current[3] = el)} className="h-screen flex flex-col items-center justify-center px-6 bg-white-100">
         <h3 className="text-2xl font-semibold text-center mb-10">Projects</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 

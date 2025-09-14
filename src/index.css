@@ -36,7 +36,7 @@ button:focus {
   transform: translateY(-4px); /* move up when hovered */
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+Hide scrollbar for Chrome, Safari and Opera
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
