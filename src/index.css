@@ -1,49 +1,11 @@
 @import "tailwindcss";
 
-/* Your custom overrides */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-/* button {
-  background: transparent;
-  border: none;
-  outline: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
-} */
-
 button:focus {
   outline: none;
-}
-
-.hero-btn {
- 
-  background-color: #003cff; /* Tailwind's blue-800 */
-  color: white;              /* ensure text is visible */
-  padding: 0.85rem 2rem;     /* bigger button size */
-  font-size: 1.125rem;       /* text-lg */
-  font-weight: 600;          /* semi-bold */
-  border-radius: 9999px;     /* fully rounded */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* nice shadow */
-  display: inline-block;     /* keeps it sized properly */
-}
-
-.button:hover {
-  transform: translateY(-4px); /* move up when hovered */
-}
-
-
-body, #root, #app, .app-container {
-  transition: background-color 0.8s ease;
-}
-
-/* index.css */
-.animated-bg {
-  background: linear-gradient(-45deg, #f9a8d4, #a5b4fc, #6ee7b7, #fde68a);
-  background-size: 400% 400%;
-  animation: gradientShift 10s ease infinite;
 }
 
 .no-scrollbar {
@@ -55,52 +17,39 @@ body, #root, #app, .app-container {
   display: none;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Animation for gradient transition */
-.gradient-transition {
-  transition: background 1.5s ease;
+.typed-blue { 
+  color: #2563eb; 
 }
 
-/* Add these animations to your CSS */
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
+.typed-gray { 
+  color: #374151; 
 }
 
-.animate-blob {
-  animation: blob 7s infinite;
+.typed-white { 
+    color: white;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
-.animation-delay-2000 {
-  animation-delay: 2s;
+.text-glow {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
 }
 
-.animation-delay-4000 {
-  animation-delay: 4s;
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover effects */
-.hover-lift {
-  transition: transform 0.3s ease;
+.hover-glow {
+    transition: all 0.3s ease;
 }
 
-.hover-lift:hover {
-  transform: translateY(-5px);
+.hover-glow:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
 }
-
-.typed-blue { color: #2563eb; }
-.typed-gray { color: #374151; }

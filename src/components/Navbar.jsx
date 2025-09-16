@@ -35,11 +35,12 @@ const Navbar = ({ menuOpen, setMenuOpen, scrollToSection, activeSection }) => {
 
     return (
         <>
-        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4">
-            <h1 className="text-xl font-semibold tracking-tight">
-            <span className="text-blue-600">&lt;L/&gt;</span>ex
+        <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/10 border-b border-white/20">
+        <div className="flex items-center justify-between px-6 py-4">
+            <h1 className="text-2xl font-black tracking-tight">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">&lt;L/&gt;</span>ex
             </h1>
-
+         
             <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="flex flex-col justify-center items-center w-8 h-8 space-y-1 cursor-pointer bg-transparent z-50"
@@ -49,29 +50,32 @@ const Navbar = ({ menuOpen, setMenuOpen, scrollToSection, activeSection }) => {
             <span ref={midBar} className="block h-0.5 w-6 bg-gray-800 rounded transition-all"></span>
             <span ref={botBar} className="block h-0.5 w-6 bg-gray-800 rounded transition-all"></span>
             </button>
+        </div>
         </nav>
 
         {/* Side Menu */}
         <div
-            ref={menuRef}
-            className="fixed top-0 right-0 w-64 h-full bg-white/95 backdrop-blur-md flex flex-col items-start p-6 z-40 translate-x-full shadow-xl pt-20"
+        ref={menuRef}
+        className="fixed top-0 right-0 w-64 h-full bg-gradient-to-b from-gray-900/90 to-gray-800/90 
+                    backdrop-blur-xl border-l border-white/10 flex flex-col items-center 
+                    p-8 z-40 translate-x-full shadow-2xl"
         >
-            <ul className="space-y-6 text-lg font-medium w-full">
+        <ul className="space-y-6 text-lg font-medium w-full text-center">
             {navItems.map((item, index) => (
-                <li 
+            <li 
                 key={item}
                 onClick={() => scrollToSection(index + 1)} 
-                className={`py-2 px-4 rounded-lg cursor-pointer transition-all ${
-                    activeSection === index + 1 
-                    ? "bg-blue-100 text-blue-600" 
-                    : "hover:bg-gray-100 hover:text-blue-600"
-                }`}
-                >
+                className={`py-2 px-4 rounded-lg cursor-pointer transition-all 
+                ${activeSection === index + 1 
+                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold shadow-lg" 
+                    : "text-gray-300 hover:text-white hover:bg-white/10"}`}
+            >
                 {item}
-                </li>
+            </li>
             ))}
-            </ul>
+        </ul>
         </div>
+
         </>
     );
     };

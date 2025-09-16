@@ -97,12 +97,12 @@ export default function App() {
 
   // Gradient background colors for each section
   const sectionGradients = [
-    "linear-gradient(135deg, #ffffff 0%, #e0f7fa 100%)", // Hero
-    "linear-gradient(135deg, #ffe4e6 0%, #bbdefb 100%)", // About
-    "linear-gradient(135deg, #dbeafe 0%, #c8e6c9 100%)", // Skills
-    "linear-gradient(135deg, #dcfce7 0%, #ffecb3 100%)", // Projects
-    "linear-gradient(135deg, #111827 0%, #1e3a8a 100%)", // Footer
-  ];
+  "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", // Hero - modern purple/blue
+  "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)", // About - pink gradient
+  "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)", // Skills - cyan gradient
+  "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)", // Projects - green/cyan
+  "linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%)", // Footer - dark modern
+];
 
   // Scroll to section
   const scrollToSection = (index) => {

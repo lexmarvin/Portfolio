@@ -35,26 +35,30 @@ const Skills = React.forwardRef((props, ref) => {
         <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center">Skills & Technologies</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-5xl w-full">
             {skillCategories.map((category, index) => (
-            <div 
-                key={category.title}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-                <h4 className="text-lg font-semibold text-gray-800 mb-6 text-center border-b pb-2">{category.title}</h4>
-                <ul className="space-y-4">
-                {category.skills.map((skill) => (
-                    <li key={skill.name} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                    {skill.customIcon ? (
-                        <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 text-white flex items-center justify-center font-bold rounded text-xs">
-                        GSAP
-                        </div>
-                    ) : (
-                        <img src={skill.icon} className="w-8 h-8" alt={skill.name} />
-                    )}
-                    <span className="text-gray-700">{skill.name}</span>
-                    </li>
-                ))}
-                </ul>
-            </div>
+                <div 
+                    key={category.title}
+                    className="glass-card rounded-3xl p-8 hover-glow group"
+                >
+                    <h4 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent text-center">
+                        {category.title}
+                    </h4>
+                    <ul className="space-y-4">
+                        {category.skills.map((skill) => (
+                            <li key={skill.name} className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/10 transition-all duration-300 cursor-pointer group-hover:scale-105">
+                                <div className="relative">
+                                    {skill.customIcon ? (
+                                        <div className="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-400 text-white flex items-center justify-center font-bold rounded-lg text-xs shadow-lg">
+                                            GSAP
+                                        </div>
+                                    ) : (
+                                        <img src={skill.icon} className="w-10 h-10 group-hover:scale-110 transition-transform duration-300 drop-shadow-lg" alt={skill.name} />
+                                    )}
+                                </div>
+                                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">{skill.name}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             ))}
         </div>
         </section>
