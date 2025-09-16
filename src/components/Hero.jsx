@@ -6,23 +6,24 @@ const Hero = React.forwardRef(({ scrollToSection }, ref) => {
     return (
         <section
         ref={ref}
-        className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center gap-8 md:gap-12 px-6 md:px-12 lg:px-60 pt-20"
+        className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center gap-8 md:gap-20 px-6 md:px-12 lg:px-60 pt-20"
         >
         <div className="text-center md:text-left md:w-1/2">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Hello! I'm{" "}
-            <span className="text-blue-600">
-                <ReactTyped
-                strings={[
-                    "<span class='text-blue-600'>&lt;L/&gt;ex</span>",
-                    "<span class='text-gray-700'>Marvin();</span>",
-                ]}
-                typeSpeed={100}
-                backSpeed={50}
-                backDelay={1500}
-                loop
-                />
-            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 whitespace-nowrap">
+                Hello! I'm{" "}
+                <span className="text-blue-600 inline-block min-w-[200px] md:min-w-[250px] lg:min-w-[300px]">
+                    <ReactTyped
+                        strings={[
+                            "<span class='typed-blue'>&lt;L/&gt;ex</span>",
+                            "<span class='typed-gray'>Marvin();</span>"
+                        ]}
+                        typeSpeed={100}
+                        backSpeed={50}
+                        backDelay={1500}
+                        loop
+                        contentType="html"
+                    />
+                </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-md mb-8 leading-relaxed">
             I like building stuff.

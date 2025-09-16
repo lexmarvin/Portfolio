@@ -101,3 +101,6 @@ html {
 .hover-lift:hover {
   transform: translateY(-5px);
 }
+
+.typed-blue { color: #2563eb; }
+.typed-gray { color: #374151; }
