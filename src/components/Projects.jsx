@@ -8,9 +8,9 @@ const Projects = React.forwardRef((props, ref) => {
         githubUrl: "https://github.com/lexmarvin/FitQuestAlpha3.git",
         },
         {
-        title: "K.K.K (KasKas Keyboard)",
+        title: "TagaType",
         description: "A speed typing test with Tagalog words.",
-        githubUrl: "https://github.com/lexmarvin/KasKasKeyboard.git",
+        githubUrl: "https://github.com/lexmarvin/TagaType",
         },
     ];
 
